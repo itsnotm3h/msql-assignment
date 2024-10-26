@@ -1,0 +1,46 @@
+{{#extends "base"}}
+{{#block "title"}}Students Enrollement{{/block}}
+
+{{#block "content"}}
+<div class="pt-5 pb-1 mb-4 d-flex w-100">
+  <div>
+    <h1>Enroll a student</h1>
+  </div>
+</div>
+<form method="POST">
+  <div class="row">
+    <div class="mb-3 col-12 col-sm-6">
+      <label class="form-label">First Name</label>
+      <input type="text" class="form-control" name="first_name">
+    </div>
+    <div class="mb-3 col-12 col-sm-6">
+      <label class="form-label">Last Name</label>
+      <input type="text" class="form-control" name="last_name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3 col-12 col-sm-3">
+      <label class="form-label">start_date</label>
+      <input type="date" class="form-control" name="start_date">
+
+    </div>
+
+    <div class="mb-3 col-12 col-sm-9">
+      <label class="form-label">Programmes</label>
+      <select class="form-select" name="programme_id">
+        <option selected>Select from below:</option>
+        {{#each programmes}}
+        <option value="{{programme_id}}">{{programme_name}}</option>
+        {{/each}}
+      </select>
+
+    </div>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{{/block}}
+{{/extends}}

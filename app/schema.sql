@@ -13,13 +13,15 @@ CREATE TABLE students(
 CREATE TABLE programmes(
     programme_id VARCHAR(50) primary key,
     programme_name varchar(200) not null,
-    duration_days int UNSIGNED not null
+    duration_years int UNSIGNED not null
 ) engine = innodb;
 
 --1. Adding Foreign Key to for students.
-alter table students add column programme_id VARCHAR(50);
+alter table students add column programme_id VARCHAR(50) not NULL;
 ALTER TABLE students ADD CONSTRAINT fk_students_programme FOREIGN KEY (programme_id) REFERENCES programmes(programme_id);
 
+
+ALTER TABLE programmes MODIFY duration_years int UNSIGNED NOT NULL;
 
 -- Create Lecturers and Modules Table
 CREATE TABLE lecturers(
@@ -35,8 +37,13 @@ CREATE TABLE modules(
 ) engine = innodb;
 
 --2. Adding Foreign Key to for modules.
-alter table modules add column lecturer_id VARCHAR(50);
+alter table modules add column lecturer_id VARCHAR(50) NOT NULL;
+alter table modules add column programme_id VARCHAR(50) NOT NULL;
 ALTER TABLE modules ADD CONSTRAINT fk_modules_lecturers FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id);
+
+ALTER TABLE modules ADD CONSTRAINT fk_modules_programmes FOREIGN KEY (programme_id) REFERENCES programmes(programme_id);
+
+
 
 -- Create attendance
 CREATE TABLE attendance(
