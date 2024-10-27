@@ -34,7 +34,7 @@ async function main() {
 
 app.get("/students", async function(req,res){
 
-    let [students] = await connection.execute("SELECT student_id, start_date , first_name,last_name,programmes.programme_name FROM students JOIN programmes ON students.programme_id = programmes.programme_id ORDER BY student_id ASC")
+    let [students] = await connection.execute(`SELECT student_id, DATE_FORMAT(start_date, "%d %b %Y") AS enroll_date , first_name,last_name,programmes.programme_name,students.contact_email AS student_email FROM students JOIN programmes ON students.programme_id = programmes.programme_id ORDER BY student_id ASC`)
 
     //this is to render the page and to pass the res. 
     res.render("students",{'students':students});

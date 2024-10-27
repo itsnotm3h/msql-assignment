@@ -44,7 +44,6 @@ VALUES
 
 ALTER TABLE lesson_days MODIFY lesson_id VARCHAR(50);
 
-
 SELECT * FROM students;
 SELECT * FROM modules;
 SELECT * FROM lecturers;
