@@ -9,25 +9,6 @@
   </div>
 </div>
 <form method="POST">
-  {{!-- <div class="row">
-    <div class="mb-3 col-12 col-sm-6">
-
-         {{#each programmes}}
-        <option value="{{programme_id}}"   {{#eq programme_id ../students.programme_id}} selected{{/eq}}>{{programme_name}}</option>
-        {{/each}}
-        
-
-      <div class="d-flex">
-      <label class="form-label w-25 align-self-middle">Student name</label>
-      <input type="text" class="form-control" name="first_name" value="{{students.first_name}}">
-      </div>
-    </div>
-    <div class="mb-3 col-12 col-sm-6">
-      <label class="form-label">Last Name</label>
-      <input type="text" class="form-control" name="last_name"  value="{{students.last_name}}">
-    </div>
-  </div> --}}
-
   <table class="table" colspan="1">
   <thead>
     <tr>
@@ -44,6 +25,7 @@
       <td>{{add 1 @index}}</td>
       <td>{{student_id}}</td>
       <td>{{first_name}} {{last_name}}</td>
+
       <td>
       <input class="form-check-input" type="checkbox" name="student_id" value="{{student_id}}" id="flexCheckChecked"
       {{!-- my code didnt work previously as attendance is not ../, as we are using it within an each loop, we will need to move one level up the scope--}}

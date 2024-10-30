@@ -188,7 +188,7 @@ async function main() {
 
         const [attendance] = await connection.execute(`SELECT * from attendance WHERE lesson_id=?`, [req.params.lesson_id]);
 
-        const [lessonInfo] = await connection.execute("SELECT * FROM lesson_days JOIN modules ON modules.module_id = lesson_days.module_id JOIN venue ON venue.venue_id = lesson_days.venue_id WHERE lesson_id=?", [req.params.lesson_id]);
+        const [lessonInfo] = await connection.execute(`SELECT lesson_days.module_id,modules.module_name,venue.venue_name, TIME_FORMAT(lesson_days.start_time,"%H:%i%p") AS start_time, TIME_FORMAT(lesson_days.end_time,"%H:%i%p") AS end_time FROM lesson_days JOIN modules ON modules.module_id = lesson_days.module_id JOIN venue ON venue.venue_id = lesson_days.venue_id WHERE lesson_id=?`, [req.params.lesson_id]);
 
         const [students] = await connection.execute("SELECT students.student_id, students.first_name, students.last_name,lesson_days.lesson_id FROM students JOIN programmes ON students.programme_id = programmes.programme_id   JOIN modules ON modules.programme_id = programmes.programme_id JOIN lesson_days ON modules.module_id = lesson_days.module_id WHERE lesson_days.lesson_id=?", [req.params.lesson_id]);
 
