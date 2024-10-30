@@ -1,0 +1,81 @@
+{{#extends "base"}}
+{{#block "title"}}Students{{/block}}
+
+{{#block "content"}}
+<div class="pt-5 pb-1 mb-4 d-flex w-100">
+  <div>
+    <h1>Lessons</h1>
+    <div>Please click into the lesson dates to mark attendance.</div>
+  </div>
+  <div class="ms-auto mt-auto">
+    {{!-- <a href="/student/enroll" class="btn btn-primary align-self-end addNew">+ New Lesson</a> --}}
+  </div>
+</div>
+
+<h4><b>Current Lessons</b></h4>
+<table class="table table-hover" colspan="1">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dates</th>
+      <th scope="col">Module</th>
+      <th scope="col">Lesson Code</th>
+      <th scope="col">Time</th>
+      <th scope="col">Lecturer Name</th>
+      <th scope="col">Venue</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each ongoing}}
+    <tr>
+      {{!-- add 1 to make the index start at 1, is a function from handlebars helpers --}}
+      <a href="/students">
+      <div>
+      <td>{{add 1 @index}}</td>
+      <td><a href="/lesson/attendance/{{lesson_id}}">{{lesson_date}}</a></td>
+      <td>{{module_name}}</td>
+      <td>{{lesson_id}}</td>
+      <td>{{start_time}} - {{end_time}}</td>
+      <td>{{first_name}} {{last_name}}</td>
+      <td>{{venue_name}}</td>
+      </div>
+      </a>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<div class="mt-5">
+<h4><b>Past Lessons</b></h4>
+<table class="table " colspan="1">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dates</th>
+      <th scope="col">Module</th>
+      <th scope="col">Lesson Code</th>
+      <th scope="col">Time</th>
+      <th scope="col">Lecturer Name</th>
+      <th scope="col">Venue</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each previous}}
+
+    <tr>
+      {{!-- add 1 to make the index start at 1, is a function from handlebars helpers --}}
+      <div>
+      <td>{{add 1 @index}}</td>
+      <td><a href="/lesson/attendance/{{lesson_id}}">{{lesson_date}}</a></td>
+      <td>{{module_name}}</td>
+      <td>{{lesson_id}}</td>
+      <td>{{start_time}} - {{end_time}}</td>
+      <td>{{first_name}} {{last_name}}</td>
+      <td>{{venue_name}}</td>
+      </div>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+{{/block}}
+{{/extends}}

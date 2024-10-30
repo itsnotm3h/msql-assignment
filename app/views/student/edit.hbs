@@ -11,25 +11,29 @@
   <div class="row">
     <div class="mb-3 col-12 col-sm-6">
       <label class="form-label">First Name</label>
-      <input type="text" class="form-control" name="first_name">
+      <input type="text" class="form-control" name="first_name" value="{{students.first_name}}">
     </div>
     <div class="mb-3 col-12 col-sm-6">
       <label class="form-label">Last Name</label>
-      <input type="text" class="form-control" name="last_name">
+      <input type="text" class="form-control" name="last_name"  value="{{students.last_name}}">
     </div>
   </div>
-  <div class="row">
+    <div class="row">
     <div class="mb-3 col-12 col-sm-3">
-      <label class="form-label">start_date</label>
-      <input type="date" class="form-control" name="start_date">
+      <label class="form-label">Student Email</label>
+      <input type="text" class="form-control" name="contact_email"  value="{{students.contact_email}}">
+    </div>
+    <div class="mb-3 col-12 col-sm-3">
+      <label class="form-label">Start Date</label>
+      <input type="date" class="form-control" name="start_date"  value="{{students.enroll_date}}">
     </div>
 
-    <div class="mb-3 col-12 col-sm-9">
+    <div class="mb-3 col-12 col-sm-6">
       <label class="form-label">Programmes</label>
       <select class="form-select" name="programme_id">
         <option selected>Select from below:</option>
         {{#each programmes}}
-        <option value="{{programme_id}}">{{programme_name}}</option>
+        <option value="{{programme_id}}"   {{#eq programme_id ../students.programme_id}} selected{{/eq}}>{{programme_name}}</option>
         {{/each}}
       </select>
 

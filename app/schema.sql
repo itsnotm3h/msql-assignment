@@ -84,7 +84,6 @@ ALTER TABLE lesson_days ADD CONSTRAINT fk_lesson_days_modules FOREIGN KEY (modul
 
 ALTER TABLE lesson_days ADD CONSTRAINT fk_lesson_days_lecturers FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id);
 
-
 ALTER TABLE lesson_days ADD CONSTRAINT fk_lesson_days_venue FOREIGN KEY (venue_id) REFERENCES venue(venue_id);
 
 describe students;
@@ -94,3 +93,16 @@ describe attendance;
 describe programmes;
 describe venue;
 describe lesson_days;
+
+
+alter table attendance add column status VARCHAR(10) not NULL;
+alter table attendance add column lesson_id VARCHAR(10) not NULL;
+AKT
+
+ALTER TABLE attendance MODIFY lesson_id VARCHAR(50) NOT NULL;
+
+ALTER TABLE attendance ADD CONSTRAINT fk_attendance_lesson FOREIGN KEY (lesson_id) REFERENCES lesson_days(lesson_id);
+
+
+
+

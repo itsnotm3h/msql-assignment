@@ -1,18 +1,24 @@
 {{#extends "base"}}
 
-{{#block "title"}}Delete Customer{{/block}}
+{{#block "title"}}Delete Student{{/block}}
 {{#block "content"}}
-<h1>Delete Customers</h1>
-{{!-- The name of the form field should match the column names of your table --}}
+<div class="pt-5 pb-1 mb-4 d-flex w-100">
+  <div>
+    <h1>Delete a student</h1>
+  </div>
+    </div>
+  <div class="ms-auto mt-auto">
 <form method="POST">
     <div>
+        <p>Please confirm if you wish to proceed to delete entry.</p>
         <div class="alert alert-danger">
             <input type="submit" value="confirm" class="btn btn-danger" />
-            <a href="/customers" class="btn">cancel</a>
+            <a href="/students" class="btn">cancel</a>
         </div>
     </div>
     </div>
 </form>
+ </div>
 {{/block}}
 
 {{/extends}}

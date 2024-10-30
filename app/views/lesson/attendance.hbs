@@ -1,0 +1,63 @@
+{{#extends "base"}}
+{{#block "title"}}Attendance for {{lesson.module_id}}{{/block}}
+
+{{#block "content"}}
+<div class="pt-5 pb-1 mb-4 d-flex w-100">
+  <div>
+    <h1>Attendance</h1>
+    <p>{{lesson.module_name}}({{lesson.module_id}}) | Venue: {{lesson.venue_name}} | Time: {{lesson.start_time}} - {{lesson.end_time}}</p>
+  </div>
+</div>
+<form method="POST">
+  {{!-- <div class="row">
+    <div class="mb-3 col-12 col-sm-6">
+
+         {{#each programmes}}
+        <option value="{{programme_id}}"   {{#eq programme_id ../students.programme_id}} selected{{/eq}}>{{programme_name}}</option>
+        {{/each}}
+        
+
+      <div class="d-flex">
+      <label class="form-label w-25 align-self-middle">Student name</label>
+      <input type="text" class="form-control" name="first_name" value="{{students.first_name}}">
+      </div>
+    </div>
+    <div class="mb-3 col-12 col-sm-6">
+      <label class="form-label">Last Name</label>
+      <input type="text" class="form-control" name="last_name"  value="{{students.last_name}}">
+    </div>
+  </div> --}}
+
+  <table class="table" colspan="1">
+  <thead>
+    <tr>
+      <th scope="col" width="5%">#</th>
+      <th scope="col" width="10%">StudentID</th>
+      <th scope="col" width="30%">Name</th>
+      <th scope="col">Attendance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each students}}
+    <tr>
+      {{!-- add 1 to make the index start at 1, is a function from handlebars helpers --}}
+      <td>{{add 1 @index}}</td>
+      <td>{{student_id}}</td>
+      <td>{{first_name}} {{last_name}}</td>
+      <td>
+      <input class="form-check-input" type="checkbox" name="student_id" value="{{student_id}}" id="flexCheckChecked"
+      {{!-- my code didnt work previously as attendance is not ../, as we are using it within an each loop, we will need to move one level up the scope--}}
+      {{stats student_id lesson_id ../attendance}} > 
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{{/block}}
+{{/extends}}
